@@ -26,7 +26,17 @@ let redisStore = new RedisStore({
   prefix: "cracks:",
 })
 
-
+app.use(session({
+	store: redisStore,
+	secret: SESSION_SECRET,
+	cookie: {
+		secure: false,
+		resave: false,
+		saveUninitialize: false,
+		httpOnly: true,
+		maxAge: 30000
+	}
+}))
 
 const connectWithRetry = () => {
 	mongoose

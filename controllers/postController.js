@@ -1,4 +1,5 @@
 const Post = require("../models/postModel")
+const protect = require("../middleware/authMiddleware")
 
 exports.getAllPosts = async (req, res, next) => {
     try {
